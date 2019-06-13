@@ -1,15 +1,20 @@
 package Gui;
 
-import FuzzyLogic.LinguisticSummarizer;
+import FuzzyLogic.*;
 import FuzzyLogic.functions.Function;
 import FuzzyLogic.functions.TriangularFunction;
 
-public class Application {
-    public void main() {
-        Function triangeAgeFun = new TriangularFunction(27, 30, 33);
-        Function triangeAbout4Fun = new TriangularFunction(3, 4, 4);
-        
 
-        LinguisticSummarizer linguisticSummarizer = new LinguisticSummarizer();
+public class Application {
+    public static void main(String[] args) {
+        Function triangeAgeFun = new TriangularFunction(27, 30, 33);
+        Function triangeAbout4Fun = new TriangularFunction(0.0, 0.5, 0.75);
+
+        Quantifier quantifier = new Quantifier("About 2", triangeAbout4Fun);
+        LinguisticVariable summarizer = new LinguisticVariable("age about 30", triangeAgeFun, new Attribute());
+
+
+        LinguisticSummarizer linguisticSummarizer = new LinguisticSummarizer(quantifier, summarizer);
+        System.out.println(linguisticSummarizer.getQualityOfLinguisticSummarization(QualityMeasure.Measure.T1));
     }
 }

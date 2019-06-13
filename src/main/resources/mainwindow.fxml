@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<GridPane prefHeight="521.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TabPane>
+         <tabs>
+            <Tab text="basic summarizer">
+               <content>
+                  <AnchorPane prefHeight="492.0" prefWidth="688.0">
+                     <children>
+                        <ComboBox layoutX="45.0" layoutY="40.0" prefWidth="150.0" promptText="quantifierChooser" fx:id="quantifierChooser"/>
+                        <ComboBox layoutX="367.0" layoutY="40.0" prefWidth="150.0" promptText="summarizerChooser" fx:id="summarizerChoozer"/>
+                        <Label alignment="TOP_CENTER" layoutX="249.0" layoutY="43.0" prefHeight="18.0" prefWidth="72.0" text="are / have" />
+                        <Group layoutX="60.0" layoutY="126.0" />
+                        <RadioButton layoutX="45.0" layoutY="81.0" mnemonicParsing="false" text="triangular function" />
+                        <RadioButton layoutX="45.0" layoutY="99.0" mnemonicParsing="false" text="trapezoidal function" />
+                        <RadioButton layoutX="367.0" layoutY="81.0" mnemonicParsing="false" text="triangular function" />
+                        <RadioButton layoutX="367.0" layoutY="99.0" mnemonicParsing="false" text="trapezoidal function" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</GridPane>

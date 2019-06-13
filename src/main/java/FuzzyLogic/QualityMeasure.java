@@ -1,12 +1,15 @@
 package FuzzyLogic;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class QualityMeasure {
-    private LinguisticVariable quantifier;
+    private Quantifier quantifier;
     private LinguisticVariable summarizer;
 
-    public QualityMeasure(LinguisticVariable quantifier, LinguisticVariable summarizer) {
+    public QualityMeasure(Quantifier quantifier, LinguisticVariable summarizer) {
         this.quantifier = quantifier;
         this.summarizer = summarizer;
     }
@@ -24,10 +27,11 @@ public class QualityMeasure {
         T10
     }
 
-    public static double getT1(List<Double> membershipDegrees){
+    public double getT1(){
+        List<Double> membershipDegrees = summarizer.getMembershipDegrees();
         Double cardinality = FuzzySet.cardinality(membershipDegrees);
         Integer setSize = membershipDegrees.size();
-        return cardinality/setSize;
+        return quantifier.getMembershipDegree(cardinality/setSize);
     }
 
 

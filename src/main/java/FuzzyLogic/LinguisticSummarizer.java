@@ -1,17 +1,18 @@
 package FuzzyLogic;
 
 public class LinguisticSummarizer {
-    private LinguisticVariable quantifier;
+    private Quantifier quantifier;
     private LinguisticVariable summarizer;
-    private FuzzySet fuzzySet;
+    private QualityMeasure qualityMeasure;
 
-    public LinguisticSummarizer(LinguisticVariable quantifier, LinguisticVariable summarizer) {
+    public LinguisticSummarizer(Quantifier quantifier, LinguisticVariable summarizer) {
         this.quantifier = quantifier;
         this.summarizer = summarizer;
+        qualityMeasure = new QualityMeasure(quantifier, summarizer);
     }
 
 
-    public void setQuantifier(LinguisticVariable quantifier){
+    public void setQuantifier(Quantifier quantifier){
         this.quantifier = quantifier;
     }
 
@@ -20,9 +21,11 @@ public class LinguisticSummarizer {
     }
 
     public double getQualityOfLinguisticSummarization(QualityMeasure.Measure measure){
+        qualityMeasure.setQuantifier(quantifier);
+        qualityMeasure.setSummarizer(summarizer);
         switch (measure) {
             case T1:
-                return QualityMeasure.getT1(quantifier.getMembershipDegrees());
+                return qualityMeasure.getT1();
             default:
                 throw new IllegalArgumentException(measure.toString() + "is not a member of Measure enum in QualityMeasure class.");
         }
