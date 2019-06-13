@@ -1,6 +1,6 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
-import FuzzyLogic.functions.TriangularFunction;
+import fuzzyLogic.functions.TriangularFunction;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

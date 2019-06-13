@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane alignment="TOP_CENTER" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.BasicSummarizationController">
+    <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="267.99998474121094" />
+        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="123.19998779296873" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="283.20001220703125" />
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints maxHeight="36.6" minHeight="10.0" prefHeight="36.6" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="160.00000228881837" minHeight="2.4000061035156364" prefHeight="50.399993896484375" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="256.79999389648435" minHeight="10.0" prefHeight="63.200006103515605" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="295.1999938964844" minHeight="10.0" prefHeight="281.59999389648436" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+      <BorderPane>
+         <center>
+                <ComboBox fx:id="quantifierChooser" prefWidth="150.0" promptText="quantifierChooser" />
+         </center>
+      </BorderPane>
+      <BorderPane GridPane.columnIndex="2">
+         <center>
+                <ComboBox fx:id="summarizerChoozer" prefWidth="150.0" promptText="summarizerChooser" />
+         </center>
+      </BorderPane>
+      <BorderPane GridPane.columnIndex="1">
+         <center>
+                <Label alignment="TOP_CENTER" prefHeight="18.0" prefWidth="72.0" text="are / have" />
+         </center>
+      </BorderPane>
+      <VBox prefHeight="48.0" prefWidth="262.0" spacing="5.0" GridPane.rowIndex="1">
+         <children>
+                <RadioButton fx:id="quantifierTriangularFunRB" mnemonicParsing="false" selected="true" text="triangular function">
+               <toggleGroup>
+                        <ToggleGroup fx:id="quantifierGroup" />
+               </toggleGroup>
+               <padding>
+                  <Insets left="65.0" />
+               </padding>
+                </RadioButton>
+                <RadioButton fx:id="quantifierTrapezoidalFunRB" mnemonicParsing="false" text="trapezoidal function" toggleGroup="$quantifierGroup">
+               <padding>
+                  <Insets left="65.0" />
+               </padding>
+            </RadioButton>
+         </children>
+      </VBox>
+      <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+                <RadioButton fx:id="summarizerTriangularFunRB" mnemonicParsing="false" selected="true" text="triangular function">
+               <toggleGroup>
+                        <ToggleGroup fx:id="summarizerGroup" />
+               </toggleGroup>
+               <padding>
+                  <Insets left="65.0" />
+               </padding>
+                </RadioButton>
+                <RadioButton fx:id="summarizerTrapezoidalFunRB" mnemonicParsing="false" text="trapezoidal function" toggleGroup="$summarizerGroup">
+               <padding>
+                  <Insets left="65.0" />
+               </padding>
+            </RadioButton>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" spacing="5.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Spinner fx:id="quantParamA1" editable="true" initialValue="0.01" max="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="0.0" minHeight="-Infinity" minWidth="-Infinity" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="a" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Spinner fx:id="quantParamB1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="b" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Spinner fx:id="quantParamC1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" />
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="c" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Spinner fx:id="quantParamD1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Spinner>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="d">
+                     <opaqueInsets>
+                        <Insets left="100.0" right="5.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" prefHeight="24.0" prefWidth="175.0" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Group>
+               <children>
+                  <Spinner fx:id="sumParamA1" prefHeight="25.0" prefWidth="60.0" />
+                  <Label layoutX="22.0" layoutY="25.0" text="a" />
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Spinner fx:id="sumParamB1" prefHeight="25.0" prefWidth="60.0" />
+                  <Label layoutX="22.0" layoutY="25.0" text="b" />
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Spinner fx:id="sumParamC1" prefHeight="25.0" prefWidth="60.0" />
+                  <Label layoutX="22.0" layoutY="25.0" text="c" />
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Spinner prefHeight="25.0" prefWidth="60.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Spinner>
+                  <Label fx:id="sumParamD1" layoutX="22.0" layoutY="25.0" text="d">
+                     <opaqueInsets>
+                        <Insets left="100.0" right="5.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </Group>
+         </children>
+         <opaqueInsets>
+            <Insets right="100.0" />
+         </opaqueInsets>
+      </HBox>
+    </children>
+</GridPane>

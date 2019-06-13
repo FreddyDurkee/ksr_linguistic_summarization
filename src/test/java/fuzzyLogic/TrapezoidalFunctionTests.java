@@ -1,6 +1,6 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
-import FuzzyLogic.functions.TrapezoidalFunction;
+import fuzzyLogic.functions.TrapezoidalFunction;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

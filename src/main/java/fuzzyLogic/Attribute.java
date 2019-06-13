@@ -1,4 +1,4 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
 import java.util.ArrayList;
 import java.util.List;

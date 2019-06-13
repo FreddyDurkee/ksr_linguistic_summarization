@@ -1,11 +1,8 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
-import FuzzyLogic.functions.Function;
+import fuzzyLogic.functions.Function;
 import lombok.Data;
 import lombok.Getter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class Quantifier {

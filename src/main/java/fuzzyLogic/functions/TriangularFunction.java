@@ -1,4 +1,4 @@
-package FuzzyLogic.functions;
+package fuzzyLogic.functions;
 
 
 public class TriangularFunction implements Function{

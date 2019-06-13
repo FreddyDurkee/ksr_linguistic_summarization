@@ -1,6 +1,6 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
-import FuzzyLogic.functions.Function;
+import fuzzyLogic.functions.Function;
 import lombok.Data;
 import lombok.Getter;
 

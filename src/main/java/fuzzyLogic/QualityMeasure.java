@@ -1,4 +1,4 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
 import lombok.Data;
 

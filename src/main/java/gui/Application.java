@@ -1,8 +1,8 @@
-package Gui;
+package gui;
 
-import FuzzyLogic.*;
-import FuzzyLogic.functions.Function;
-import FuzzyLogic.functions.TriangularFunction;
+import fuzzyLogic.*;
+import fuzzyLogic.functions.Function;
+import fuzzyLogic.functions.TriangularFunction;
 
 
 public class Application {

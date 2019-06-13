@@ -1,4 +1,4 @@
-package FuzzyLogic.functions;
+package fuzzyLogic.functions;
 
 public class TrapezoidalFunction implements  Function{
     private double a, b, c, d;

@@ -1,4 +1,4 @@
-package FuzzyLogic;
+package fuzzyLogic;
 
 public class LinguisticSummarizer {
     private Quantifier quantifier;
