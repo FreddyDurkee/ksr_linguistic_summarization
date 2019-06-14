@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.RootController">
+<TabPane fx:id="tabPane" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.RootController">
          <tabs>
              <Tab fx:id="basicSummarizationTab" closable="false" text="basic summarization">
                 <fx:include fx:id="basicSumTab" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="basicSummarization.fxml" />
