@@ -1,5 +1,8 @@
 package data.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum HeightAttribute implements EnumAttributes {
 
     VERY_HIGH, HIGH, AVERAGE, LOW, VERY_LOW;

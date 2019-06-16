@@ -1,5 +1,8 @@
 package data.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ValueAttribute {
 
     VERY_CHEAP, CHEAP, AVERAGE, EXPENSIVE, VERY_EXPENSIVE;

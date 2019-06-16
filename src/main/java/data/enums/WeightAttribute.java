@@ -1,5 +1,8 @@
 package data.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum WeightAttribute {
 
     HEAVY, SEMI_HEAVY, AVERAGE, WELTERWEIGHT, LIGHT;
