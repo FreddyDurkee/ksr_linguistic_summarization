@@ -8,6 +8,7 @@ public class FunctionParameters {
     private Double b;
     private Double c;
     private Double d;
+    private String functionName;
 
     public FunctionParameters(Double a, Double b, Double c) {
         this.a = a;

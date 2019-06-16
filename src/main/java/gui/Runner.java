@@ -21,8 +21,8 @@ public class Runner extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("Linguistic Summariazotor");
-        primaryStage.setMinHeight(600);
-        primaryStage.setMinWidth(800);
+//        primaryStage.setMinHeight(600);
+//        primaryStage.setMinWidth(900);
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
