@@ -9,11 +9,11 @@ public class Footballer {
 
     private Integer id;
     private String name;
-    private Double age; // wiek (bardzo stary, stary, średni, młody, bardzo młody)
+    private Double age; // wiek (very old, old, average, young, very young)
     private Double potential; // (legendary, world class, professional, novice, amateur, beginner)
-    private Double value; // wartość rynkowa (bardzo tani, tani, średni, drogi, bardzo drogi)
-    private Double height; // wzrost w cm (bardzo wysoki, wysoki, średni, niski, bardzo niski)
-    private Double weight; // waga w kg (ciężka, półciężka, średnia, półśrednia, lekka)
+    private Double value; // wartość rynkowa (very cheap, cheap, average, expensive, very expensive)
+    private Double height; // wzrost w cm (very high, high, medium, low, very low)
+    private Double weight; // waga w kg (heavy, semi-heavy, medium, welterweight, light)
     private Double speed; // szybkość (legendary, world class, professional, novice, amateur, beginner)
     private Double stamina; // wytrzymałość (legendary, world class, professional, novice, amateur, beginner)
     private Double strength; // siła (legendary, world class, professional, novice, amateur, beginner)

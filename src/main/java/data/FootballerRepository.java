@@ -6,6 +6,7 @@ import lombok.Data;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class FootballerRepository {
@@ -39,6 +40,45 @@ public class FootballerRepository {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Double> getAllAges(){
+        return footballers.stream().map(v -> v.getAge()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllPotentials(){
+        return footballers.stream().map(v -> v.getPotential()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllValues(){
+        return footballers.stream().map(v -> v.getValue()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllHeights(){
+        return footballers.stream().map(v -> v.getHeight()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllWeights(){
+        return footballers.stream().map(v -> v.getWeight()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllSpeeds(){
+        return footballers.stream().map(v -> v.getSpeed()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllStaminas(){
+        return footballers.stream().map(v -> v.getStamina()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllStrengths(){
+        return footballers.stream().map(v -> v.getStrength()).collect(Collectors.toList());
+    }
+
+    public List<Double> getAllBalances(){
+        return footballers.stream().map(v -> v.getBalance()).collect(Collectors.toList());
+    }
+    public List<Double> getAllAgilities(){
+        return footballers.stream().map(v -> v.getAgility()).collect(Collectors.toList());
     }
 
 }
