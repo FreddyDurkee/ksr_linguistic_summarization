@@ -4,22 +4,24 @@ import lombok.Data;
 
 @Data
 public class FunctionParameters {
-    private Double a;
-    private Double b;
-    private Double c;
-    private Double d;
+    private double a;
+    private double b;
+    private double c;
+    private double d;
+
     private String functionName;
 
-    public FunctionParameters(Double a, Double b, Double c) {
+    public FunctionParameters(double a, double b, double c) {
         this.a = a;
         this.b = b;
         this.c = c;
     }
 
-    public FunctionParameters(Double a, Double b, Double c, Double d) {
+    public FunctionParameters(double a, double b, double c, double d) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
     }
+
 }

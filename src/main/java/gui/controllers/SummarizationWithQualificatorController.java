@@ -1,14 +1,13 @@
 package gui.controllers;
 
 import com.sun.org.apache.xml.internal.security.Init;
-import data.FunctionParameters;
-import data.QuantifiersSet;
-import data.Set;
+import data.*;
 import fuzzyLogic.*;
 import fuzzyLogic.functions.Function;
 import fuzzyLogic.functions.TrapezoidalFunction;
 import fuzzyLogic.functions.TriangularFunction;
 import fuzzyLogic.variables.LinguisticVariable;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,31 +17,21 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SummarizationWithQualificatorController {
 
-    private List<String> quantifiersNames;
-    private QuantifiersSet quantifiersSet = new QuantifiersSet();
 
-    @FXML
-    private Spinner<Double> quantParamA, quantParamB, quantParamC, quantParamD;
-    @FXML
-    private Spinner<Double> qualParamA, qualParamB, qualParamC, qualParamD;
-    @FXML
-    private Spinner<Double> sumParamA, sumParamB, sumParamC, sumParamD;
-    @FXML
-    private RadioButton quantifierTriangularFunRB, quantifierTrapezoidalFunRB;
-    @FXML
-    private RadioButton qualTriangularFunRB, qualTrapezoidalFunRB;
-    @FXML
-    private RadioButton summarizerTriangularFunRB, summarizerTrapezoidalFunRB;
-    @FXML
-    private ComboBox<String> quantifierChooser, qualifierChooser, summarizerChooser;
     @FXML
     private Button generateBt;
     @FXML
-    private ToggleGroup quantifierGroup, qualGroup, summarizerGroup;
+    private PartController quantifierPartController;
+    @FXML
+    private PartController qualifierPartController;
+    @FXML
+    private PartController summarizerPartController;
+
     @FXML
     private TableView<Result> summarizationTable;
     private ObservableList<Result> tabledResults = FXCollections.observableArrayList();
@@ -52,76 +41,36 @@ public class SummarizationWithQualificatorController {
     private TableColumn<Result, Double> DT_T1, DT_T2, DT_T3, DT_T4, DT_T5, DT_T6, DT_T7, DT_T8, DT_T9, DT_T10, DT_T11;
 
 
-    public SummarizationWithQualificatorController() {
-        quantifiersNames = new ArrayList<>(quantifiersSet.getSetForTriangularFunction().keySet());
-    }
-
     @FXML
     void initialize() {
         Init.init();
         prepareDataTable();
-        quantifierChooser.setItems(FXCollections.observableList(quantifiersNames));
-        quantifierChooser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (quantifierTriangularFunRB.isSelected()) {
-                reloadParameters(quantifiersSet, quantifierChooser, quantifierTriangularFunRB.getText());
-            } else if (quantifierTrapezoidalFunRB.isSelected()) {
-                reloadParameters(quantifiersSet, quantifierChooser, quantifierTrapezoidalFunRB.getText());
-            }
-        });
-
-        quantParamD.disableProperty().bind(quantifierTrapezoidalFunRB.selectedProperty().not());
-        qualParamD.disableProperty().bind(qualTrapezoidalFunRB.selectedProperty().not());
-        sumParamD.disableProperty().bind(summarizerTrapezoidalFunRB.selectedProperty().not());
+        prepareQuantifier();
+        prepareSummarizer(qualifierPartController);
+        prepareSummarizer(summarizerPartController);
 
 
-        quantifierGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            RadioButton rb = (RadioButton) quantifierGroup.getSelectedToggle();
-            reloadParameters(quantifiersSet, quantifierChooser, rb.getText());
-        });
-
-
-        quantifierChooser.getSelectionModel().selectFirst();
         generateBt.setOnAction(event -> {
-            Function quantifierFunction, quantFunction, summarizerFunction;
-            if (quantifierTriangularFunRB.isSelected()) {
-                quantifierFunction = new TriangularFunction(quantParamA.getValue(), quantParamB.getValue(), quantParamC.getValue());
-            } else {
-                quantifierFunction = new TrapezoidalFunction(quantParamA.getValue(), quantParamB.getValue(), quantParamC.getValue(), quantParamD.getValue());
-            }
 
-            if (qualTriangularFunRB.isSelected()) {
-                quantFunction = new TriangularFunction(qualParamA.getValue(), qualParamB.getValue(), qualParamC.getValue());
-            } else {
-                quantFunction = new TrapezoidalFunction(qualParamA.getValue(), qualParamB.getValue(), qualParamC.getValue(), qualParamD.getValue());
-            }
+            Quantifier quantifier = new Quantifier(quantifierPartController.getName(), quantifierPartController.getFunction());
+            LinguisticVariable summarizer = LinguisticVariable.of(summarizerPartController.getName(), summarizerPartController.getFunction(), summarizerPartController.getAttribute());
+            LinguisticVariable qualifier = LinguisticVariable.of(qualifierPartController.getName(), qualifierPartController.getFunction(), qualifierPartController.getAttribute());
 
-            if (summarizerTriangularFunRB.isSelected()) {
-                summarizerFunction = new TriangularFunction(sumParamA.getValue(), sumParamB.getValue(), sumParamC.getValue());
-            } else {
-                summarizerFunction = new TrapezoidalFunction(sumParamA.getValue(), sumParamB.getValue(), sumParamC.getValue(), sumParamD.getValue());
-            }
-            Quantifier quantifier = new Quantifier(quantifierChooser.getValue(), quantifierFunction);
-            LinguisticVariable summarizer = LinguisticVariable.of("age about 30", summarizerFunction, new Attribute());
-            LinguisticVariable qualifier = LinguisticVariable.of("obojetnie", quantFunction, new Attribute());
 
-            String sentence = quantifier.getName() + " footballers being / having " + qualifier.getName() + " are / have " + summarizer.getName();
+            String sentence = quantifierPartController.getName() + " footballers being / having " + qualifierPartController.getName() + " are / have " + summarizerPartController.getName();
             QualityMeasure qualityMeasure = new QualityMeasureWithQualifier(quantifier, summarizer, qualifier);
             LinguisticSummarizer linguisticSummarizer = new LinguisticSummarizer(sentence, qualityMeasure);
             tabledResults.add(linguisticSummarizer.getMeasurements());
         });
     }
 
-    private void reloadParameters(Set set, ComboBox<String> chooser, String rbText) {
-        if (rbText.equals("triangular function")) {
-            FunctionParameters parameters = set.getSetForTriangularFunction().get(chooser.getValue());
-            setDefaultSprinnersValue(parameters, false);
-        } else if (rbText.equals("trapezoidal function")) {
-            FunctionParameters parameters = set.getSetForTrapezoidalFunction().get(chooser.getValue());
-            setDefaultSprinnersValue(parameters, true);
-        } else {
-            throw new IllegalArgumentException("Missing function type!");
-        }
 
+    private void prepareSummarizer(PartController summarizerPart) {
+        summarizerPart.setConfigSupplier(SummarizerConfiguration.getInstance());
+    }
+
+    private void prepareQuantifier() {
+        quantifierPartController.setConfigSupplier(QuantifierConfiguration.getInstance());
     }
 
     private void prepareDataTable() {
@@ -181,14 +130,4 @@ public class SummarizationWithQualificatorController {
                 new PropertyValueFactory<Result, Double>("T11")
         );
     }
-
-    private void setDefaultSprinnersValue(FunctionParameters parameters, boolean isD) {
-        quantParamA.getValueFactory().setValue(parameters.getA());
-        quantParamB.getValueFactory().setValue(parameters.getB());
-        quantParamC.getValueFactory().setValue(parameters.getC());
-        if (isD) {
-            quantParamD.getValueFactory().setValue(parameters.getD());
-        }
-    }
-
 }

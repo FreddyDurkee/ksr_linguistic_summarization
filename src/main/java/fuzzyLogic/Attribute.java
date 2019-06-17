@@ -1,26 +1,53 @@
 package fuzzyLogic;
 
-import java.util.ArrayList;
+import data.FootballerRepository;
+
 import java.util.List;
 
-public class Attribute {
+public enum Attribute {
+    //TODO: Fix values
+    AGE(0, 100),
+    HEIGHT(0, 210),
+    POTENTIAL(0, 100),
+    VALUE(0, 200000000),
+    WEIGHT(0, 120);
 
-    public List<Double> getAllValues(){
-//        TODO: implement method
-        List<Double> list = new ArrayList<>();
-        list.add(22.0);
-        list.add(35.0);
-        list.add(29.0);
-        list.add(40.0);
+    private static final FootballerRepository repository = new FootballerRepository();
 
-        return list;
+    static {
+        repository.loadFromCSV(Thread.currentThread().getContextClassLoader().getResource("footballers.csv").getPath());
     }
 
-    public double getMin(){
-        return 0;
+    private final double min;
+    private final double max;
+
+    Attribute(double min, double max) {
+        this.min = min;
+        this.max = max;
     }
 
-    public double getMax(){
-        return 100;
+    public List<Double> getAllValues() {
+        switch (this) {
+            case AGE:
+                return repository.getAllAges();
+            case VALUE:
+                return repository.getAllValues();
+            case HEIGHT:
+                return repository.getAllHeights();
+            case WEIGHT:
+                return repository.getAllWeights();
+            case POTENTIAL:
+                return repository.getAllPotentials();
+            default:
+                throw new IllegalArgumentException("Unknown Attribute type.");
+        }
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public double getMax() {
+        return max;
     }
 }
