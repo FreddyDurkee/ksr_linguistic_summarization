@@ -17,12 +17,9 @@ public class Runner extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(Thread.currentThread().getContextClassLoader().getResource("mainwindow.fxml"));
-//        loader.setController(new BasicSummarizationController());
         Parent root = loader.load();
 
         primaryStage.setTitle("Linguistic Summariazotor");
-//        primaryStage.setMinHeight(600);
-//        primaryStage.setMinWidth(900);
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);

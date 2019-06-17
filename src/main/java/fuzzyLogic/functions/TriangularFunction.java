@@ -19,6 +19,16 @@ public class TriangularFunction implements Function{
         return 0;
     }
 
+    @Override
+    public double getSupp() {
+        return c-a;
+    }
+
+    @Override
+    public double getArea() {
+        return 0.5 * getSupp();
+    }
+
     private void checkParameters() {
         if(a > b){
             throw new IllegalArgumentException("A must be smaller than B");

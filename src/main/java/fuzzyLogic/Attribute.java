@@ -15,4 +15,12 @@ public class Attribute {
 
         return list;
     }
+
+    public double getMin(){
+        return 0;
+    }
+
+    public double getMax(){
+        return 100;
+    }
 }

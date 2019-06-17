@@ -18,4 +18,12 @@ public class Quantifier {
     public Double getMembershipDegree(Double x) {
         return membershipFunction.getMembership(x);
     }
+
+    public double getSupp() {
+        return membershipFunction.getSupp();
+    }
+
+    public double getClm() {
+        return membershipFunction.getArea();
+    }
 }

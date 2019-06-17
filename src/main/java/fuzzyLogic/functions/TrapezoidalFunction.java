@@ -19,6 +19,16 @@ public class TrapezoidalFunction implements  Function{
         return 0;
     }
 
+    @Override
+    public double getSupp() {
+        return d-a;
+    }
+
+    @Override
+    public double getArea() {
+        return 0.5 * ((c-b) + (d-a));
+    }
+
     private void checkParameters() {
         if(a > b){
             throw new IllegalArgumentException("A must be smaller than B");
