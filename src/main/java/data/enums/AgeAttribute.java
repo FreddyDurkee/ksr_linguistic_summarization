@@ -17,13 +17,13 @@ public enum AgeAttribute implements EnumAttributes, AttributeSet {
     // 100-45, 45-35, 35-25, 20-25 , 0-20
 
     public static AgeAttribute valueOf(Double value) {
-        if(value>45){
+        if (value > 45) {
             return VERY_OLD;
-        } else if(value>35){
+        } else if (value > 35) {
             return OLD;
-        } else if (value>25){
+        } else if (value > 25) {
             return AVERAGE;
-        } else if (value>20){
+        } else if (value > 20) {
             return YOUNG;
         }
         return VERY_YOUNG;

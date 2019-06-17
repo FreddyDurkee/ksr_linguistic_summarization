@@ -32,22 +32,22 @@ public enum ValueAttribute implements EnumAttributes, AttributeSet {
     @Override
     public Map<EnumAttributes, FunctionParameters> getSetForTriangularFunction() {
         Map<EnumAttributes, FunctionParameters> sftf = new HashMap<>();
-//        sftf.put(HEAVY, new FunctionParameters(95.0, 110.0, 125.0));
-//        sftf.put(SEMI_HEAVY, new FunctionParameters(102.5, 95.0, 87.5));
-//        sftf.put(AVERAGE, new FunctionParameters(95.0, 80.0, 65.0));
-//        sftf.put(WELTERWEIGHT, new FunctionParameters(72.5, 65.0, 57.5));
-//        sftf.put(LIGHT, new FunctionParameters(65.0, 50.0, 35.0));
+        sftf.put(VERY_CHEAP, new FunctionParameters(0.0, 50000.0, 100000.0));
+        sftf.put(CHEAP, new FunctionParameters(100000.0, 500000.0, 1100000.0));
+        sftf.put(AVERAGE, new FunctionParameters(900000.0, 3812500.0, 8525000.0));
+        sftf.put(EXPENSIVE, new FunctionParameters(7000000.0, 26875000.0, 60750000.0));
+        sftf.put(VERY_EXPENSIVE, new FunctionParameters(50000000.0, 75000000.0, 200000000.0));
         return sftf;
     }
 
     @Override
     public Map<EnumAttributes, FunctionParameters> getSetForTrapezoidalFunction() {
         Map<EnumAttributes, FunctionParameters> sftf = new HashMap<>();
-//        sftf.put(HEAVY, new FunctionParameters(95.0, 105.0, 115.0, 125.0));
-//        sftf.put(SEMI_HEAVY, new FunctionParameters(87.5,92.5,97.5,102.5));
-//        sftf.put(AVERAGE, new FunctionParameters(65.0,75.0,85.0,95.0));
-//        sftf.put(WELTERWEIGHT, new FunctionParameters(57.5,62.5,67.5,72.5));
-//        sftf.put(LIGHT, new FunctionParameters(35.0,45.0,55.0,65.0));
+        sftf.put(VERY_CHEAP, new FunctionParameters(0.0, 33333.0, 66666.0, 100000.0));
+        sftf.put(CHEAP, new FunctionParameters(100000.0, 433333.0, 766666.0, 1100000.0));
+        sftf.put(AVERAGE, new FunctionParameters(900000.0, 3441666.0, 5983333.0, 8525000.0));
+        sftf.put(EXPENSIVE, new FunctionParameters(7000000.0, 24916666.0, 42833333.0, 60750000.0));
+        sftf.put(VERY_EXPENSIVE, new FunctionParameters(50000000.0, 100000000.0, 150000000.0, 200000000.0));
         return sftf;
     }
 
