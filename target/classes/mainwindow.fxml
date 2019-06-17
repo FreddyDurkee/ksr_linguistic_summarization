@@ -8,5 +8,8 @@
              <Tab fx:id="basicSummarizationTab" closable="false" text="basic summarization">
                 <fx:include fx:id="basicSumTab" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="basicSummarization.fxml" />
              </Tab>
+             <Tab fx:id="summarizationWithQualifier" closable="false" text="summarization with qualifier summarization">
+                 <fx:include fx:id="SumWithQualifierTab" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="summarizationWithCualifier.fxml" />
+             </Tab>
          </tabs>
 </TabPane>

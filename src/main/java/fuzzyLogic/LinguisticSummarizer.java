@@ -1,16 +1,12 @@
 package fuzzyLogic;
 
-import fuzzyLogic.variables.LinguisticVariable;
-
 public class LinguisticSummarizer {
-    private Quantifier quantifier;
-    private LinguisticVariable summarizer;
+    private final String sentence;
     private QualityMeasure qualityMeasure;
 
-    public LinguisticSummarizer(Quantifier quantifier, LinguisticVariable summarizer) {
-        this.quantifier = quantifier;
-        this.summarizer = summarizer;
-        qualityMeasure = new QualityMeasure(quantifier, summarizer);
+    public LinguisticSummarizer(String sentence, QualityMeasure measure) {
+        this.sentence = sentence;
+        this.qualityMeasure = measure;
     }
 
     public double getQualityOfLinguisticSummarization(QualityMeasure.Measure measure){
@@ -35,13 +31,27 @@ public class LinguisticSummarizer {
                 return qualityMeasure.getT9();
             case T10:
                 return qualityMeasure.getT10();
+            case T11:
+                return qualityMeasure.getT11();
             default:
                 throw new IllegalArgumentException(measure.toString() + "is not a member of Measure enum in QualityMeasure class.");
         }
     }
-    public String getSentence(QualityMeasure.Measure measure){
-        double quality = getQualityOfLinguisticSummarization(measure);
-        return quantifier.getName() + " are/have " + summarizer.getName() + " T[ " + quality + " ]";
+    public Result getMeasurements(){
+        Result result = new Result();
+        result.setSentence(sentence);
+        result.setT1(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T1));
+        result.setT2(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T2));
+        result.setT3(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T3));
+        result.setT4(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T4));
+        result.setT5(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T5));
+        result.setT6(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T6));
+        result.setT7(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T7));
+        result.setT8(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T8));
+        result.setT9(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T9));
+        result.setT10(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T10));
+        result.setT11(getQualityOfLinguisticSummarization(QualityMeasure.Measure.T11));
+        return result;
     }
 
 }

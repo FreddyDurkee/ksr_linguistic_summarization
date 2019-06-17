@@ -2,15 +2,12 @@ package fuzzyLogic;
 
 import fuzzyLogic.variables.LinguisticVariable;
 import lombok.Data;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
-import java.util.stream.DoubleStream;
 
-@Data
 public class QualityMeasure {
-    private Quantifier quantifier;
-    private LinguisticVariable summarizer;
+    protected Quantifier quantifier;
+    protected LinguisticVariable summarizer;
 
     public QualityMeasure(Quantifier quantifier, LinguisticVariable summarizer) {
         this.quantifier = quantifier;
@@ -27,7 +24,8 @@ public class QualityMeasure {
         T7,
         T8,
         T9,
-        T10
+        T10,
+        T11
     }
 
     public double getT1() {
@@ -69,15 +67,15 @@ public class QualityMeasure {
     }
 
     public double getT9() {
-        throw new NotImplementedException();
+        return Double.NaN;
     }
 
     public double getT10() {
-        throw new NotImplementedException();
+        return Double.NaN;
     }
 
     public double getT11() {
-        throw new NotImplementedException();
+        return Double.NaN;
     }
 
 }
