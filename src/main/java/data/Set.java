@@ -2,7 +2,8 @@ package data;
 
 import java.util.Map;
 
+//TODO: REMOVE
 public interface Set {
-    public Map<String, FunctionParameters> getSetForTriangularFunction();
-    public Map<String, FunctionParameters> getSetForTrapezoidalFunction();
+    public Map<String, FunctionParameters> getTriangular();
+    public Map<String, FunctionParameters> getTrapezoidal();
 }

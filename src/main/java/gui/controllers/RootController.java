@@ -1,5 +1,6 @@
 package gui.controllers;
 
+import data.FootballerRepository;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
@@ -11,17 +12,15 @@ public class RootController {
 
     @FXML private Tab basicSummarizationTab;
 
-    @FXML private BasicSummarizationController basicSummarizationController;
+    @FXML private BasicSummarizationController basicSumTabController;
+    @FXML private SummarizationWithQualificatorController SumWithQualifierTabController;
 
-
-    public void init() {
-        tabPane.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Tab> observable,
-                                                                        Tab oldValue, Tab newValue) -> {
-            if (newValue == basicSummarizationTab) {
-                System.out.println("basicSummarizationTab");
-            } else {
-                System.out.println("- another Tab -");
-            }
-        });
+    @FXML
+    void initialize() {
+        FootballerRepository repository = new FootballerRepository();
+        repository.loadFromCSV(Thread.currentThread().getContextClassLoader().getResource("footballers.csv").getPath());
+        basicSumTabController.setRepository(repository);
+        SumWithQualifierTabController.setRepository(repository);
     }
+
 }

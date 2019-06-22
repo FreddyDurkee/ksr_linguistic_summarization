@@ -1,5 +1,6 @@
 package fuzzyLogic.variables;
 
+import data.FootballerRepository;
 import fuzzyLogic.Attribute;
 import fuzzyLogic.functions.Function;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class Variable implements LinguisticVariable{
     private Function membershipFunction;
     @Getter
     private Attribute attribute;
+    private List<Double> membershipDegress;
 
 
     public Variable(String name, Function membershipFunction, Attribute attribute) {
@@ -25,19 +27,13 @@ public class Variable implements LinguisticVariable{
     }
 
     public List<Double> getMembershipDegrees(){
-        List<Double> membershipDegress = new ArrayList<>();
-        for(Double value : attribute.getAllValues()){
-            membershipDegress.add(membershipFunction.getMembership(value));
-        }
         return membershipDegress;
     }
 
-    @Override
     public LinguisticVariable and(LinguisticVariable variable) {
         return new VariableAndComposer(this,variable);
     }
 
-    @Override
     public LinguisticVariable or(LinguisticVariable variable) {
         return new VariableOrComposer(this,variable);
     }
@@ -49,13 +45,17 @@ public class Variable implements LinguisticVariable{
 
     @Override
     public double getIn() {
-        return membershipFunction.getSupp() / (attribute.getMax() - attribute.getMin());
+        return membershipFunction.getSupp() / getSizeUniverseOfDiscourse();
     }
 
     @Override
     public double getR() {
         double r = getMembershipDegrees().stream().mapToDouble(a->a).filter(a->a>0).count();
         return r / getMembershipDegrees().size();
+    }
+
+    double getSizeUniverseOfDiscourse(){
+        return attribute.getMax() - attribute.getMin();
     }
 
     @Override
@@ -65,7 +65,20 @@ public class Variable implements LinguisticVariable{
 
     @Override
     public double getT8Cardinality() {
-        return getCardinality() / (attribute.getMax() - attribute.getMin());
+        return getClm() / getSizeUniverseOfDiscourse();
+    }
+
+    @Override
+    public double getClm(){
+        return  membershipFunction.getArea();
+    }
+
+    @Override
+    public void fit(FootballerRepository repository) {
+        membershipDegress = new ArrayList<>();
+        for(Double value : repository.get(attribute)){
+            membershipDegress.add(membershipFunction.getMembership(value));
+        }
     }
 
 }

@@ -1,17 +1,18 @@
 package fuzzyLogic;
 
 import fuzzyLogic.variables.LinguisticVariable;
+import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QualityMeasureWithQualifier extends QualityMeasure {
-    private final LinguisticVariable qualifier;
+@AllArgsConstructor
+public class QualifiedSummarizer implements LinguisticSummarizer{
 
-    public QualityMeasureWithQualifier(Quantifier quantifier, LinguisticVariable summarizer, LinguisticVariable qualifier) {
-        super(quantifier, summarizer);
-        this.qualifier = qualifier;
-    }
+    private String sentence;
+    private LinguisticVariable summarizer;
+    private Quantifier quantifier;
+    private final LinguisticVariable qualifier;
 
     public double getT1() {
         List<Double> result = new ArrayList<>();
@@ -71,4 +72,20 @@ public class QualityMeasureWithQualifier extends QualityMeasure {
         return 2 * 0.5;
     }
 
+    public QualityMeasure getMeasurements(){
+        QualityMeasure qualityMeasure = new QualityMeasure();
+        qualityMeasure.setSentence(sentence);
+        qualityMeasure.setT1(getT1());
+        qualityMeasure.setT2(getT2());
+        qualityMeasure.setT3(getT3());
+        qualityMeasure.setT4(getT4());
+        qualityMeasure.setT5(getT5());
+        qualityMeasure.setT6(getT6());
+        qualityMeasure.setT7(getT7());
+        qualityMeasure.setT8(getT8());
+        qualityMeasure.setT9(getT9());
+        qualityMeasure.setT10(getT10());
+        qualityMeasure.setT11(getT11());
+        return qualityMeasure;
+    }
 }

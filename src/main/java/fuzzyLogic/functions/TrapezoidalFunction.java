@@ -12,11 +12,11 @@ public class TrapezoidalFunction implements  Function{
 
     public double getMembership(double x) {
         checkParameters();
-        if (x >= b && x <= c) return 1;
+        if (x >= b && x <= c) return 1.0;
         if (x > a && x < b) return (x - a) / (b - a);
         if (x > c && x < d) return (d - x) / (d - c);
 
-        return 0;
+        return 0.0;
     }
 
     @Override

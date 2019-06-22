@@ -1,5 +1,7 @@
 package fuzzyLogic.variables;
 
+import data.FootballerRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,5 +64,16 @@ public class VariableOrComposer implements LinguisticVariable {
     @Override
     public double getT8Cardinality() {
         return variable.getT8Cardinality() * variable1.getT8Cardinality();
+    }
+
+    @Override
+    public double getClm(){
+        return  0;
+    }
+
+    @Override
+    public void fit(FootballerRepository repository) {
+        variable.fit(repository);
+        variable1.fit(repository);
     }
 }

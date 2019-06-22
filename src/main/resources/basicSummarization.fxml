@@ -25,13 +25,13 @@
         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
     </rowConstraints>
     <children>
-      <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="are / have" GridPane.columnIndex="1" GridPane.valignment="TOP" />
+      <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="footballers are / have" GridPane.columnIndex="1" GridPane.valignment="TOP" />
       <Button fx:id="generateBt" mnemonicParsing="false" prefHeight="29.0" prefWidth="98.0" text="Generate" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>
       </Button>
-      <ComboBox fx:id="summarizerComposer" minWidth="-Infinity" prefHeight="26.0" prefWidth="100.0" promptText="summarizerComposer" GridPane.columnIndex="3" GridPane.valignment="TOP" />
+      <ComboBox fx:id="summarizerConnective" minWidth="-Infinity" prefHeight="26.0" prefWidth="100.0" promptText="summarizerComposer" GridPane.columnIndex="3" GridPane.valignment="TOP" />
       <TableView fx:id="summarizationTable" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
          <columns>
             <TableColumn fx:id="DT_Sentence" prefWidth="75.0" text="Sentence" />

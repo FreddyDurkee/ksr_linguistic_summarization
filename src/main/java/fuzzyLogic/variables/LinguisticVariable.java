@@ -1,5 +1,6 @@
 package fuzzyLogic.variables;
 
+import data.FootballerRepository;
 import fuzzyLogic.Attribute;
 import fuzzyLogic.functions.Function;
 
@@ -11,7 +12,6 @@ public interface LinguisticVariable {
     static LinguisticVariable of(String name, Function membershipFunction, Attribute attribute){
         return new Variable(name,membershipFunction,attribute);
     }
-
 
 
     List<Double> getMembershipDegrees();
@@ -27,4 +27,8 @@ public interface LinguisticVariable {
     double getCardinality();
 
     double getT8Cardinality();
+
+    double getClm();
+
+    void fit(FootballerRepository repository);
 }

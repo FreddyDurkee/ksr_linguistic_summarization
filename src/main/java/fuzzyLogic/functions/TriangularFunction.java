@@ -13,10 +13,10 @@ public class TriangularFunction implements Function{
     public double getMembership(double x) {
         checkParameters();
 
-        if (Math.abs(x - b) < .00001) return 1;
+        if (Math.abs(x - b) < .00001) return 1.0;
         if (x > a && x < b) return (x - a) / (b - a);
         if (x > b && x < c) return (c - x) / (c - b);
-        return 0;
+        return 0.0;
     }
 
     @Override

@@ -2,6 +2,7 @@ package data;
 
 
 import au.com.bytecode.opencsv.CSVReader;
+import fuzzyLogic.Attribute;
 import lombok.Data;
 
 import java.io.FileReader;
@@ -25,16 +26,16 @@ public class FootballerRepository {
                 footballers.add(new Footballer(
                         Integer.valueOf(nextRecord[0]),
                         nextRecord[1],
-                        Double.valueOf(nextRecord[2]),
-                        Double.valueOf(nextRecord[3]),
-                        Double.valueOf(nextRecord[4]),
+                        Integer.valueOf(nextRecord[2]),
+                        Integer.valueOf(nextRecord[3]),
+                        Integer.valueOf(nextRecord[4]),
                         Double.valueOf(nextRecord[5]),
                         Double.valueOf(nextRecord[6]),
-                        Double.valueOf(nextRecord[7]),
-                        Double.valueOf(nextRecord[8]),
-                        Double.valueOf(nextRecord[9]),
-                        Double.valueOf(nextRecord[10]),
-                        Double.valueOf(nextRecord[11])
+                        Integer.valueOf(nextRecord[7]),
+                        Integer.valueOf(nextRecord[8]),
+                        Integer.valueOf(nextRecord[9]),
+                        Integer.valueOf(nextRecord[10]),
+                        Integer.valueOf(nextRecord[11])
                 ));
             }
         }
@@ -43,43 +44,63 @@ public class FootballerRepository {
         }
     }
 
-    public List<Double> getAllAges(){
+    public void loadFromList(List<Footballer> footballers) {
+        this.footballers = footballers;
+    }
+
+    private List<Double> getAllAges(){
         return footballers.stream().map(v -> v.getAge()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllPotentials(){
+    private List<Double> getAllPotentials(){
         return footballers.stream().map(v -> v.getPotential()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllValues(){
+    private List<Double> getAllValues(){
         return footballers.stream().map(v -> v.getValue()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllHeights(){
+    private List<Double> getAllHeights(){
         return footballers.stream().map(v -> v.getHeight()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllWeights(){
+    private List<Double> getAllWeights(){
         return footballers.stream().map(v -> v.getWeight()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllSpeeds(){
+    private List<Double> getAllSpeeds(){
         return footballers.stream().map(v -> v.getSpeed()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllStaminas(){
+    private List<Double> getAllStaminas(){
         return footballers.stream().map(v -> v.getStamina()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllStrengths(){
+    private List<Double> getAllStrengths(){
         return footballers.stream().map(v -> v.getStrength()).collect(Collectors.toList());
     }
 
-    public List<Double> getAllBalances(){
+    private List<Double> getAllBalances(){
         return footballers.stream().map(v -> v.getBalance()).collect(Collectors.toList());
     }
-    public List<Double> getAllAgilities(){
+    private List<Double> getAllAgilities(){
         return footballers.stream().map(v -> v.getAgility()).collect(Collectors.toList());
     }
 
+    public List<Double> get(Attribute attribute) {
+        switch (attribute) {
+            case AGE:
+                return getAllAges();
+            case VALUE:
+                return getAllValues();
+            case HEIGHT:
+                return getAllHeights();
+            case WEIGHT:
+                return getAllWeights();
+            case POTENTIAL:
+                return getAllPotentials();
+            default:
+                throw new IllegalArgumentException("Unknown Attribute type.");
+        }
+    }
 }
